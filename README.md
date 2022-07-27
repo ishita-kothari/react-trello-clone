@@ -46,9 +46,9 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## Future enhancements
-- add authentication and allow members
+- add authentication and allow members, tagging them
 - add/allow user to type feature labels to the cards and filter them
-- sharing functionality
+- enterprise app sharing functionality
 - add/edit description in the card
 - map comments with the user
 - improve styling
