@@ -44,3 +44,11 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Future enhancements
+- add authentication and allow members
+- add/allow user to type feature labels to the cards and filter them
+- sharing functionality
+- add/edit description in the card
+- map comments with the user
+- improve styling
