@@ -1,0 +1,8 @@
+.item-wrapper{
+    min-width: 350px;
+    border-radius: 3px;
+    background-color: gainsboro;
+    padding: 5px;
+    margin: 10px;
+    height: 100%;
+}

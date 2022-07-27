@@ -1,0 +1,30 @@
+body{
+  color: #4e2d09;
+}
+
+
+.App {
+  background-image: url("https://images.unsplash.com/32/Mc8kW4x9Q3aRR3RkP5Im_IMG_4417.jpg?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8M3wxMTEyODQ1fHxlbnwwfHx8fA%3D%3D&w=1000&q=80");
+  height: 100vh;
+  background-position: center;
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  overflow-y: auto;
+  align-items: flex-start;
+}
+
+h6 {
+  margin: 5px 0;
+}
+
+.header {
+  background-color: #f9f8f882;
+  padding: 20px;
+  margin: -20px -20px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
