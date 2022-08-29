@@ -4,25 +4,31 @@ import {
   shiftCardPosition,
   updateCardTitle,
 } from "../../actions/updateList";
-import { StorageContext } from "../StorageProvider";
+// import { StorageContext } from "../StorageProvider";
 import CardDetail from "./cardDetail";
 import "./index.css";
 
-const TrelloCard = ({ desc, id, listId, ...rest }) => {
+type cardProps = {
+  id: number,
+  desc: string,
+  listId: number,
+  [x: string]: any,
+};
+const TrelloCard = ({ desc, id, listId, ...rest }: cardProps) => {
   const [showModal, setShowModal] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [descText, setDescText] = useState(desc);
-  const storage = React.useContext(StorageContext);
-  const moveToOptions = storage.get("list");
+  // const storage = React.useContext(StorageContext);
+  // const moveToOptions = storage.get("list");
   const closeModal = () => setShowModal(false);
 
   useEffect(() => {
-    setDescText(desc)
-  }, [desc])
-  
+    setDescText(desc);
+  }, [desc]);
+
   return (
     <>
-      <div className="card-wrapper" cardId={id}>
+      <div className="card-wrapper" key={id}>
         <div className="flexLayout">
           {isEdit ? (
             <>
@@ -33,7 +39,7 @@ const TrelloCard = ({ desc, id, listId, ...rest }) => {
               />
               <button
                 onClick={() => {
-                  updateCardTitle(storage, descText, listId, id);
+                  // updateCardTitle(storage, descText, listId, id);
                   setIsEdit(false);
                 }}
               >
@@ -47,24 +53,23 @@ const TrelloCard = ({ desc, id, listId, ...rest }) => {
                 style={{ textDecoration: "underline", color: "blue" }}
               >
                 <span>{descText}</span>
-                {rest.labels?.map((i) => (
+                {rest.labels?.map((i:string) => (
                   <span className={`${i} dot`}></span>
                 ))}
               </p>
               <div>
                 <button onClick={() => setIsEdit(true)}>Edit</button>
-                <select
+                {/* <select
                   name="moveTo"
-                  value={''}
-                  onChange={(e) =>{
-                    shiftCardPosition(
-                      storage,
-                      parseInt(e.target.value),
-                      id,
-                      listId
-                    )
-                    }
-                  }
+                  value={""}
+                  // onChange={(e) => {
+                  //   shiftCardPosition(
+                  //     storage,
+                  //     parseInt(e.target.value),
+                  //     id,
+                  //     listId
+                  //   );
+                  // }}
                 >
                   <option>Move To</option>
                   {moveToOptions
@@ -72,7 +77,7 @@ const TrelloCard = ({ desc, id, listId, ...rest }) => {
                     .map((i) => (
                       <option value={i.id}>{i.title}</option>
                     ))}
-                </select>
+                </select> */}
               </div>
             </>
           )}

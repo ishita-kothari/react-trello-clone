@@ -14,7 +14,8 @@ const getTimestamp = () => {
 };
 
 export const updateData = (list, data) => {
-  let newId = list.length;
+  let newId = list?.length;
+  console.log('list', list)
   data["id"] = newId;
   data["updateTime"] = getTimestamp();
   const newData = [...list, data];
@@ -22,7 +23,7 @@ export const updateData = (list, data) => {
 };
 
 export const updateCardList = (list, data, listId) => {
-  let newId = list.filter((i) => i.id === listId)[0].cards.length;
+  let newId = list?.filter((i) => i.id === listId)[0].cards.length;
   data["id"] = `${listId} - ${newId}`;
   data["updateTime"] = getTimestamp();
   const newData = list.map((i) => {

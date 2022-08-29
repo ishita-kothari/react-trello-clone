@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
 import { updateCardList, updateData } from '../../actions/updateList';
 import { StorageContext } from '../StorageProvider';
+// import { StorageContext } from '../StorageProvider';
 
+type AddButtonProps = {
+    type?: string,
+    listId?: number
+}
 const styles = {
     buttonStyle: {
         padding: '6px 10px',
@@ -27,11 +32,13 @@ const initialFormState = {
     text: ''
 }
 
-const AddButton = ({type = 'card', listId}) => {
+const AddButton = ({type = 'card', listId}: AddButtonProps) => {
     const [showForm, setShowForm] = useState(false);
     const [formData, setFormData] = useState(initialFormState)
     const storage = React.useContext(StorageContext)
+    console.log('storage', storage)
     let updatedList = storage.get('list')
+    // let updatedList = {}
 
     const handleCloseForm = () => {
         setShowForm(false);

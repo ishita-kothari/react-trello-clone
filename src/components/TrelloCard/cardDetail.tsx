@@ -1,18 +1,24 @@
 import React from "react";
 import { addComments, addLabel, removeLabel } from "../../actions/updateList";
 import CommentBox from "../../common/CommentBox";
-import { StorageContext } from "../StorageProvider";
+// import { StorageContext } from "../StorageProvider";
 
-const CardDetail = ({ desc, onClose, cardId, ...rest }) => {
-  const storage = React.useContext(StorageContext);
-  const handleCommentSubmit = (value) => {
-    addComments(value, cardId, storage);
+type CardDetailProps = {
+  desc: string,
+  cardId: number,
+  onClose: () => void,
+  [x: string]: any
+}
+const CardDetail = ({ desc, onClose, cardId, ...rest }: CardDetailProps) => {
+  // const storage = React.useContext(StorageContext);
+  const handleCommentSubmit = (value: string) => {
+    // addComments(value, cardId, storage);
   };
-  const handleLabelChange = (value) => {
+  const handleLabelChange = (value: string) => {
     if(rest.labels?.includes(value)){
-      removeLabel(value, cardId, storage);
+      // removeLabel(value, cardId, storage);
     } else {
-      addLabel(value, cardId, storage);
+      // addLabel(value, cardId, storage);
     }
   };
   return (
@@ -22,9 +28,9 @@ const CardDetail = ({ desc, onClose, cardId, ...rest }) => {
         <button onClick={onClose}>X</button>
       </div>
       <hr />
-      <CommentBox cardId={cardId} handleCommentSubmit={handleCommentSubmit} />
+      <CommentBox handleCommentSubmit={handleCommentSubmit} />
       <h6>Comments:</h6>
-      {rest.comments?.map((i, k) => (
+      {rest.comments?.map((i: string, k: number) => (
         <p>
           comment {k + 1}: {i}
         </p>
@@ -40,7 +46,7 @@ const CardDetail = ({ desc, onClose, cardId, ...rest }) => {
           onChange={(e) => handleLabelChange(e.target.value)}
           checked={rest.labels?.includes('red')}
         />
-        <label for="red"> Important</label>
+        <label htmlFor="red"> Important</label>
         <br />
         <input
           type="checkbox"
@@ -50,7 +56,7 @@ const CardDetail = ({ desc, onClose, cardId, ...rest }) => {
           onChange={(e) => handleLabelChange(e.target.value)}
           checked={rest.labels?.includes('blue')}
         />
-        <label for="blue"> Informative / Low Priority</label>
+        <label htmlFor="blue"> Informative / Low Priority</label>
         <br />
       </div>
     </div>

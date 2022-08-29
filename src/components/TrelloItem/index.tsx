@@ -1,14 +1,24 @@
 import React from "react";
 import { getDateTime, sortCards } from "../../actions/updateList";
 import AddButton from "../AddButton";
-import { StorageContext } from "../StorageProvider";
+// import { StorageContext } from "../StorageProvider";
 import TrelloCard from "../TrelloCard";
 import "./index.css";
 
-const TrelloItem = ({ title, cards, ...rest }) => {
-  const storage = React.useContext(StorageContext);
-  const handleSorting = (value) => {
-    sortCards(storage, value, rest.id);
+type TrelloItemProp = {
+  title: string,
+  cards: {
+    id: number,
+    desc: string,
+    comments: string[],
+    labels: string[],
+  }[],
+  [x:string]: any
+};
+const TrelloItem = ({ title, cards, ...rest }: TrelloItemProp) => {
+  // const storage = React.useContext(StorageContext);
+  const handleSorting = (value: string) => {
+    // sortCards(storage, value, rest.id);
   };
   return (
     <>
@@ -26,7 +36,7 @@ const TrelloItem = ({ title, cards, ...rest }) => {
         </div>
 
         {cards.map((c) => (
-          <TrelloCard desc={c.desc} id={c.id} listId={rest.id} {...c} />
+          <TrelloCard description={c.desc} cardid={c.id} listId={rest.id} {...c} />
         ))}
 
         <AddButton listId={rest.id} />

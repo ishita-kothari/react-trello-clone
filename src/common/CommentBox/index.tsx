@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 
-const CommentBox = ({ value, handleCommentSubmit }) => {
-  const [comment, setComment] = useState();
+type CommentBoxProps = {
+  handleCommentSubmit: (value: string) => void 
+}
+
+
+const CommentBox = ({ handleCommentSubmit }: CommentBoxProps) => {
+  const [comment, setComment] = useState<string | ''>('');
   return (
     <div className="flexLayout">
       <input
@@ -12,7 +17,6 @@ const CommentBox = ({ value, handleCommentSubmit }) => {
       <button
         onClick={() => {
           setComment("");
-
           handleCommentSubmit(comment);
         }}
       >
