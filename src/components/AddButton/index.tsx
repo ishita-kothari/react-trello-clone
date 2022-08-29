@@ -38,7 +38,6 @@ const AddButton = ({type = 'card', listId}: AddButtonProps) => {
     const storage = React.useContext(StorageContext)
     console.log('storage', storage)
     let updatedList = storage.get('list')
-    // let updatedList = {}
 
     const handleCloseForm = () => {
         setShowForm(false);

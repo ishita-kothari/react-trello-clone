@@ -1,6 +1,7 @@
 import React from "react";
 import { getDateTime, sortCards } from "../../actions/updateList";
 import AddButton from "../AddButton";
+import { StorageContext } from "../StorageProvider";
 // import { StorageContext } from "../StorageProvider";
 import TrelloCard from "../TrelloCard";
 import "./index.css";
@@ -16,9 +17,9 @@ type TrelloItemProp = {
   [x:string]: any
 };
 const TrelloItem = ({ title, cards, ...rest }: TrelloItemProp) => {
-  // const storage = React.useContext(StorageContext);
+  const storage = React.useContext(StorageContext);
   const handleSorting = (value: string) => {
-    // sortCards(storage, value, rest.id);
+    sortCards(storage, value, rest.id);
   };
   return (
     <>

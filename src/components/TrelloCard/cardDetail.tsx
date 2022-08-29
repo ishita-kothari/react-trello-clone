@@ -1,7 +1,7 @@
 import React from "react";
 import { addComments, addLabel, removeLabel } from "../../actions/updateList";
 import CommentBox from "../../common/CommentBox";
-// import { StorageContext } from "../StorageProvider";
+import { StorageContext } from "../StorageProvider";
 
 type CardDetailProps = {
   desc: string,
@@ -10,15 +10,15 @@ type CardDetailProps = {
   [x: string]: any
 }
 const CardDetail = ({ desc, onClose, cardId, ...rest }: CardDetailProps) => {
-  // const storage = React.useContext(StorageContext);
+  const storage = React.useContext(StorageContext);
   const handleCommentSubmit = (value: string) => {
-    // addComments(value, cardId, storage);
+    addComments(value, cardId, storage);
   };
   const handleLabelChange = (value: string) => {
     if(rest.labels?.includes(value)){
-      // removeLabel(value, cardId, storage);
+      removeLabel(value, cardId, storage);
     } else {
-      // addLabel(value, cardId, storage);
+      addLabel(value, cardId, storage);
     }
   };
   return (
